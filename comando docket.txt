@@ -1,0 +1,9 @@
+clean maven
+package maven
+
+-- criar imagem docker
+docker build -t desafio-backend .
+
+
+-- subir docker compose
+docker-compose up -d
