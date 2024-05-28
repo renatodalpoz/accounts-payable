@@ -1,0 +1,375 @@
+{
+	"info": {
+		"_postman_id": "f3174b77-6817-4f48-9d67-0e686591bc3c",
+		"name": "Desafio Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9014062"
+	},
+	"item": [
+		{
+			"name": "01 login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02 novo usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"renatodalpoz\",\r\n    \"password\": \"1234\",\r\n    \"role\": \"ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03 cadastrar conta",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYWNjb3VudHMtcGF5YWJsZS1hdXRoIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MTY5MjA0MDF9.uQ-Of93yNQVr0BswrBLEyjkvgN8C1E9ISLNJ_SmRK54",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data_vencimento\": \"2024-10-10\",\r\n    \"data_pagamento\": \"2024-10-01\",\r\n    \"valor\": \"10560.65\",\r\n    \"descricao\": \"Pagamento de taxas governamentais\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10 import conta",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYWNjb3VudHMtcGF5YWJsZS1hdXRoIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MTY5MjI4MzJ9.v6dej6c-kHRMlJ3dm8eckUk1Q0eJXlUt-Skp6KXP9BU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "file",
+						"value": "text/csv"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/GIT_RDP/accounts-payable/input.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04 alterar conta",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYWNjb3VudHMtcGF5YWJsZS1hdXRoIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MTY5MTQ5OTl9.fFuaq0H6Jp_9fZCo9T9W1JK3kMcx0ER01zql1_6bk4E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"data_vencimento\": \"2024-10-20\",\r\n    \"data_pagamento\": \"2024-10-01\",\r\n    \"valor\": \"580.65\",\r\n    \"descricao\": \"Teste alteração conta\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05 alterar situacao",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYWNjb3VudHMtcGF5YWJsZS1hdXRoIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MTY5MTUzODV9.kkJ11EaWoAdpKvFpRliEtwVfM-HpH8_zc2J1zHsU8OQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"situacao\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/accounts/situation",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"situation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06 lista contas filter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYWNjb3VudHMtcGF5YWJsZS1hdXRoIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MTY5MTcyMTB9.tzMOKYArelzdSdPT3q7rzxCrSkblq9rXQPN59vC_PCU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/list?dataVencimento=2024-10-10&descricao=taxas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"list"
+					],
+					"query": [
+						{
+							"key": "dataVencimento",
+							"value": "2024-10-10"
+						},
+						{
+							"key": "descricao",
+							"value": "taxas"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07 lista contas id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYWNjb3VudHMtcGF5YWJsZS1hdXRoIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MTY5MTg3OTJ9.qgSkscfWTTwF-_i0Olmmh_5mO8cc1e8YlwP-KN-Z-t4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/account?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"account"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08 total pago",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYWNjb3VudHMtcGF5YWJsZS1hdXRoIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MTY5MTk1MDl9.8Uv6KCNjr1RZ9OEdKMyQYrMtMWbAA5VXctO6kTPWI48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/amount?dataVencimentoIni=2024-01-01&dataVencimentoFim=2025-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"amount"
+					],
+					"query": [
+						{
+							"key": "dataVencimentoIni",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "dataVencimentoFim",
+							"value": "2025-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09 lista contas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktYWNjb3VudHMtcGF5YWJsZS1hdXRoIiwic3ViIjoiYWRtaW4iLCJleHAiOjE3MTY5MDc2NDV9.We0s9YRIofySFPfqOZD-UZO60WtCfivm8Zm-j8CIvoU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
